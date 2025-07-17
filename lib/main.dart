@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:instagramclone/Screens/UserProfile.dart';
+import 'package:instagramclone/Screens/SplashScreen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData.dark(),
-      home: Profile_Screen(),
+      home: SplashScreen(),
     );
   }
 }

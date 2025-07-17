@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:instagramclone/Funtional_icons/likeButton.dart';
+import 'package:instagramclone/Funtional_icons/heart_Animation.dart';
 import 'package:instagramclone/Screens/HomePage.dart';
 import 'package:instagramclone/widgtes/Expandable_Text.dart';
+import 'package:instagramclone/widgtes/message_widgets/comments_bottom_sheet.dart';
 
 class Feed extends StatefulWidget {
   final List<Map<String, dynamic>> feedsss;
@@ -17,6 +18,14 @@ class Feed extends StatefulWidget {
 }
 
 class _FeedState extends State<Feed> {
+  late List<bool> isLikedList;
+  @override
+  void initState() {
+    super.initState();
+
+    isLikedList = List.generate(widget.feedsss.length, (_) => false);
+  }
+
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
@@ -85,10 +94,17 @@ class _FeedState extends State<Feed> {
             ),
             SizedBox(
               height: 400,
-              child: Image.asset(
-                feedAdmin[index]["postImage"],
-                width: double.infinity,
-                fit: BoxFit.cover,
+              child: DoubleTapLikeWidget(
+                onLiked: () {
+                  setState(() {
+                    isLikedList[index] = true;
+                  });
+                },
+                child: Image.asset(
+                  feedAdmin[index]["postImage"],
+                  width: double.infinity,
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
             Container(
@@ -101,11 +117,43 @@ class _FeedState extends State<Feed> {
                   Row(
                     children: [
                       Padding(padding: EdgeInsets.only(left: 10)),
-                      LikeButton(),
-                      Icon(
-                        Icons.messenger_outline,
-                        size: 22,
+                      IconButton(
+                        icon: Icon(
+                          isLikedList[index]
+                              ? Icons.favorite
+                              : Icons.favorite_border,
+                          color: isLikedList[index]
+                              ? Colors.red.withOpacity(0.8)
+                              : Colors.white,
+                        ),
+                        onPressed: () {
+                          setState(() {
+                            isLikedList[index] = !isLikedList[index];
+                          });
+                        },
                       ),
+                      IconButton(
+                          icon: Icon(Icons.messenger_outline, size: 22),
+                          onPressed: () async {
+                            final newComment =
+                                await showModalBottomSheet<String>(
+                              context: context,
+                              isScrollControlled: true,
+                              backgroundColor: Colors.transparent,
+                              builder: (_) => CommentsBottomSheet(
+                                comments: [
+                                  "Nice post!",
+                                  "Awesome 🔥",
+                                  "Wow 👏",
+                                ],
+                              ),
+                            );
+
+                            if (newComment != null && newComment.isNotEmpty) {
+                              print("User commented: $newComment");
+                              // TODO: Add logic to update comments list or backend
+                            }
+                          }),
                       SizedBox(
                         width: 10,
                       ),
@@ -179,11 +227,32 @@ class _FeedState extends State<Feed> {
                       SizedBox(
                         width: 10,
                       ),
-                      Text(
-                        "Add a comment...",
-                        style: TextStyle(
-                          fontSize: 14,
-                          color: Color(0xff8A8A8A),
+                      TextButton(
+                        onPressed: () async {
+                          final newComment = await showModalBottomSheet<String>(
+                            context: context,
+                            isScrollControlled: true,
+                            backgroundColor: Colors.transparent,
+                            builder: (_) => CommentsBottomSheet(
+                              comments: [
+                                "Nice post!",
+                                "Awesome 🔥",
+                                "Wow 👏",
+                              ],
+                            ),
+                          );
+
+                          if (newComment != null && newComment.isNotEmpty) {
+                            print("User commented: $newComment");
+                            // TODO: Add logic to update comments list or backend
+                          }
+                        },
+                        child: Text(
+                          "Add a comment...",
+                          style: TextStyle(
+                            fontSize: 14,
+                            color: Color(0xff8A8A8A),
+                          ),
                         ),
                       )
                     ],

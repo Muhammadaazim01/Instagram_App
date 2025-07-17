@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:instagramclone/widgtes/message_widgets/Messages_list.dart';
 import 'package:instagramclone/widgtes/message_widgets/message_grid.dart';
+import 'package:instagramclone/widgtes/message_widgets/message_request.dart';
 
 class Message_Screen extends StatefulWidget {
   const Message_Screen({super.key});
@@ -78,14 +79,20 @@ class _Message_ScreenState extends State<Message_Screen> {
       "time": "1d ago",
     },
     {
-      "name": "Ali",
+      "name": "MUZAFFAR",
       "image": "assets/images/1.png",
-      "message": "Hey, what's up?",
-      "time": "2h ago",
+      "message": "Let’s catch up later.",
+      "time": "1d ago",
     },
     {
-      "name": "Sana",
-      "image": "assets/images/2.png",
+      "name": "Sariq",
+      "image": "assets/images/4.png",
+      "message": "Let’s catch up later.",
+      "time": "1d ago",
+    },
+    {
+      "name": "Sariq",
+      "image": "assets/images/8.png",
       "message": "Let’s catch up later.",
       "time": "1d ago",
     },
@@ -102,11 +109,11 @@ class _Message_ScreenState extends State<Message_Screen> {
           constraints:
               BoxConstraints(maxWidth: MediaQuery.of(context).size.width * 0.4),
           child: Text(
-            "muhammad_aazim_212",
+            "Messages",
             style: TextStyle(
               color: Colors.white,
               fontSize: 20,
-              fontWeight: FontWeight.w500,
+              fontWeight: FontWeight.bold,
             ),
             overflow: TextOverflow.ellipsis,
           ),
@@ -171,7 +178,14 @@ class _Message_ScreenState extends State<Message_Screen> {
                   ),
                 ),
                 TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => MessageRequest(),
+                      ),
+                    );
+                  },
                   child: Text(
                     "Requests",
                     style: GoogleFonts.roboto(

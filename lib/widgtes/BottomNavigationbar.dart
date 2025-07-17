@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:instagramclone/Screens/Explore.dart';
+import 'package:instagramclone/Screens/HomePage.dart';
+import 'package:instagramclone/Screens/Reels.dart';
+import 'package:instagramclone/Screens/Shop_Screen.dart';
+import 'package:instagramclone/Screens/UserProfile.dart';
 
 class InstaBottomNav extends StatefulWidget {
   const InstaBottomNav({super.key});
@@ -8,31 +13,19 @@ class InstaBottomNav extends StatefulWidget {
 }
 
 class _InstaBottomNavState extends State<InstaBottomNav> {
-  int _selectedIndex = 0;
+  int selectedIndex = 0;
 
-  final List<Widget> _screens = [
-    //  HomePage(),
-    //   Explore(),
-    //  ReelsPage(),
-    //   Center(
-    //     child: Text(
-    //       'Shop Screen',
-    //       style: TextStyle(
-    //         color: Colors.white,
-    //       ),
-    //     ),
-    //   ),
-    //   Center(
-    //     child: Text(
-    //       'Profile Screen',
-    //       style: TextStyle(color: Colors.white),
-    //     ),
-    //   ),
+  final List<Widget> screens = [
+    HomePage(),
+    Explore(),
+    ReelsPage(),
+    Shop_Screen(),
+    Profile_Screen(),
   ];
 
-  void _onItemTapped(int index) {
+  void onItemTapped(int index) {
     setState(() {
-      _selectedIndex = index;
+      selectedIndex = index;
     });
   }
 
@@ -40,10 +33,10 @@ class _InstaBottomNavState extends State<InstaBottomNav> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
-      body: _screens[_selectedIndex],
+      body: screens[selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _selectedIndex,
-        onTap: _onItemTapped,
+        currentIndex: selectedIndex,
+        onTap: onItemTapped,
         backgroundColor: Colors.black,
         selectedItemColor: Colors.white,
         unselectedItemColor: Colors.grey[600],

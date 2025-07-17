@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:instagramclone/Screens/HomePage.dart';
+import 'package:instagramclone/widgtes/BottomNavigationbar.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -13,11 +13,11 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
 
-    Future.delayed(Duration(seconds: 3), () {
-      Navigator.pushReplacement(
+    Future.delayed(Duration(seconds: 2), () {
+      Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => const HomePage(),
+          builder: (context) => const InstaBottomNav(),
         ),
       );
     });

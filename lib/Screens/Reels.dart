@@ -34,6 +34,28 @@ class _ReelsPageState extends State<ReelsPage> {
       "liketext": "31.7 k",
       "commentlike": "10 k",
     },
+    {
+      "videourl": "assets/videos/cbum_ice_bath.mp4",
+      "startpage": "Reels",
+      "profile": "assets/images/cbumprofile.jpeg",
+      "userprofile": "Mr_Olympia",
+      "Expandabeltext":
+          "Unbelievable climbing speed by a professional climber scaling a 100ft wall in record time. Amazing strength and agility shown!Unbelievable climbing speed by a professional climber scaling a 100ft wall in record time. Amazing strength and agility shown!",
+      "BottomMusicText": "body_Builders . Original Audio",
+      "liketext": "31.7 k",
+      "commentlike": "10 k",
+    },
+    {
+      "videourl": "assets/videos/olympia_conference.mp4",
+      "startpage": "Reels",
+      "profile": "assets/images/cbumprofile.jpeg",
+      "userprofile": "Conference",
+      "Expandabeltext":
+          "Unbelievable climbing speed by a professional climber scaling a 100ft wall in record time. Amazing strength and agility shown!Unbelievable climbing speed by a professional climber scaling a 100ft wall in record time. Amazing strength and agility shown!",
+      "BottomMusicText": "body_Builders . Original Audio",
+      "liketext": "31.7 k",
+      "commentlike": "10 k",
+    },
   ];
   @override
   Widget build(BuildContext context) {

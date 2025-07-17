@@ -28,7 +28,7 @@ class List_Storys extends StatelessWidget {
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         image: DecorationImage(
-                          image: AssetImage(""),
+                          image: AssetImage("assets/images/8.png"),
                           fit: BoxFit.cover,
                         ),
                       ),

@@ -18,7 +18,7 @@ final List<Map<String, String>> storyList = [
     'username': 'john_doe',
   },
   {
-    'userstoryimage': 'assets/images/messi.png',
+    'userstoryimage': 'assets/images/1.png',
     'username': 'messi',
   },
   {
@@ -26,39 +26,39 @@ final List<Map<String, String>> storyList = [
     'username': 'brain',
   },
   {
-    'userstoryimage': 'assets/images/messi.png',
+    'userstoryimage': 'assets/images/2.png',
     'username': 'messi',
   },
   {
-    'userstoryimage': 'assets/images/brain.png',
+    'userstoryimage': 'assets/images/4.png',
     'username': 'brain',
   },
   {
-    'userstoryimage': 'assets/images/messi.png',
+    'userstoryimage': 'assets/images/5.png',
     'username': 'messi',
   },
   {
-    'userstoryimage': 'assets/images/brain.png',
+    'userstoryimage': 'assets/images/6.png',
     'username': 'brain',
   },
   {
-    'userstoryimage': 'assets/images/brain.png',
+    'userstoryimage': 'assets/images/7.png',
     'username': 'brain',
   },
   {
-    'userstoryimage': 'assets/images/messi.png',
+    'userstoryimage': 'assets/images/8.png',
     'username': 'messi',
   },
   {
-    'userstoryimage': 'assets/images/brain.png',
+    'userstoryimage': 'assets/images/9.png',
     'username': 'brain',
   },
   {
-    'userstoryimage': 'assets/images/brain.png',
+    'userstoryimage': 'assets/images/10.png',
     'username': 'brain',
   },
   {
-    'userstoryimage': 'assets/images/messi.png',
+    'userstoryimage': 'assets/images/11.png',
     'username': 'messi',
   },
   {
@@ -68,7 +68,7 @@ final List<Map<String, String>> storyList = [
 ];
 final List<Map<String, dynamic>> feedAdmin = [
   {
-    'profileImage': 'assets/images/messi.png',
+    'profileImage': 'assets/images/1.png',
     'username': 'marvel',
     'postImage': 'assets/images/Rectangle 1.png',
     'likes': '105,762 likes',
@@ -79,7 +79,7 @@ final List<Map<String, dynamic>> feedAdmin = [
     'timeAgo': '13 hours ago',
   },
   {
-    'profileImage': 'assets/images/messi.png',
+    'profileImage': 'assets/images/2.png',
     'username': 'marvel',
     'postImage': 'assets/images/Wallpaper2.jpeg',
     'likes': '105,762 likes',
@@ -90,7 +90,7 @@ final List<Map<String, dynamic>> feedAdmin = [
     'timeAgo': '1 day ago',
   },
   {
-    'profileImage': 'assets/images/messi.png',
+    'profileImage': 'assets/images/3.png',
     'username': 'marvel',
     'postImage': 'assets/images/Wallpaper2.jpeg',
     'likes': '105,762 likes',
@@ -101,7 +101,7 @@ final List<Map<String, dynamic>> feedAdmin = [
     'timeAgo': '20 days ago',
   },
   {
-    'profileImage': 'assets/images/messi.png',
+    'profileImage': 'assets/images/4.png',
     'username': 'marvel',
     'postImage': 'assets/images/Rectangle 1.png',
     'likes': '105,762 likes',
@@ -112,7 +112,7 @@ final List<Map<String, dynamic>> feedAdmin = [
     'timeAgo': '13 hours ago',
   },
   {
-    'profileImage': 'assets/images/messi.png',
+    'profileImage': 'assets/images/7.png',
     'username': 'marvel',
     'postImage': 'assets/images/Wallpaper2.jpeg',
     'likes': '105,762 likes',
@@ -123,7 +123,7 @@ final List<Map<String, dynamic>> feedAdmin = [
     'timeAgo': '1 day ago',
   },
   {
-    'profileImage': 'assets/images/messi.png',
+    'profileImage': 'assets/images/7.png',
     'username': 'marvel',
     'postImage': 'assets/images/Wallpaper2.jpeg',
     'likes': '105,762 likes',
@@ -152,13 +152,6 @@ class _HomePageState extends State<HomePage> {
                 color: Colors.white,
               ),
             ),
-            IconButton(
-              onPressed: () {},
-              icon: Icon(
-                Icons.arrow_forward_ios_rounded,
-                size: 15,
-              ),
-            )
           ],
         ),
         actions: [
