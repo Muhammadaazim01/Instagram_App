@@ -70,181 +70,186 @@ class _Profile_ScreenState extends State<Profile_Screen> {
           ),
         ],
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          SizedBox(height: 20),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Stack(
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(height: 20),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    CircleAvatar(
-                      radius: 45,
-                      backgroundImage: AssetImage("assets/images/messi.png"),
+                    Stack(
+                      children: [
+                        CircleAvatar(
+                          radius: 45,
+                          backgroundImage:
+                              AssetImage("assets/images/messi.png"),
+                        ),
+                        Positioned(
+                          bottom: 0,
+                          right: 0,
+                          child: Container(
+                            width: 24,
+                            height: 24,
+                            decoration: BoxDecoration(
+                              color: Colors.blue,
+                              shape: BoxShape.circle,
+                              border: Border.all(color: Colors.black, width: 2),
+                            ),
+                            child: Icon(
+                              Icons.add,
+                              size: 16,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
-                    Positioned(
-                      bottom: 0,
-                      right: 0,
-                      child: Container(
-                        width: 24,
-                        height: 24,
-                        decoration: BoxDecoration(
-                          color: Colors.blue,
-                          shape: BoxShape.circle,
-                          border: Border.all(color: Colors.black, width: 2),
-                        ),
-                        child: Icon(
-                          Icons.add,
-                          size: 16,
-                          color: Colors.white,
-                        ),
+                    SizedBox(width: 16),
+                    Expanded(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          Column(
+                            children: [
+                              Text(
+                                "0",
+                                style: TextStyle(
+                                  fontSize: 17,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              SizedBox(height: 4),
+                              Text(
+                                "Posts",
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ],
+                          ),
+                          Column(
+                            children: [
+                              Text(
+                                "2",
+                                style: TextStyle(
+                                  fontSize: 17,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              SizedBox(height: 4),
+                              Text(
+                                "Followers",
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ],
+                          ),
+                          Column(
+                            children: [
+                              Text(
+                                "3",
+                                style: TextStyle(
+                                  fontSize: 17,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              SizedBox(height: 4),
+                              Text(
+                                "Following",
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
                       ),
                     ),
                   ],
                 ),
-                SizedBox(width: 16),
-                Expanded(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Column(
-                        children: [
-                          Text(
-                            "0",
-                            style: TextStyle(
-                              fontSize: 17,
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          SizedBox(height: 4),
-                          Text(
-                            "Posts",
-                            style: TextStyle(
-                              fontSize: 14,
-                              color: Colors.white,
-                            ),
-                          ),
-                        ],
-                      ),
-                      Column(
-                        children: [
-                          Text(
-                            "2",
-                            style: TextStyle(
-                              fontSize: 17,
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          SizedBox(height: 4),
-                          Text(
-                            "Followers",
-                            style: TextStyle(
-                              fontSize: 14,
-                              color: Colors.white,
-                            ),
-                          ),
-                        ],
-                      ),
-                      Column(
-                        children: [
-                          Text(
-                            "3",
-                            style: TextStyle(
-                              fontSize: 17,
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          SizedBox(height: 4),
-                          Text(
-                            "Following",
-                            style: TextStyle(
-                              fontSize: 14,
-                              color: Colors.white,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
+              ),
+              SizedBox(height: 10),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: Text(
+                  "Muhammad Aazim",
+                  style: GoogleFonts.roboto(
+                    color: Colors.white,
+                    fontSize: 14,
                   ),
                 ),
-              ],
-            ),
-          ),
-          SizedBox(height: 10),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: Text(
-              "Muhammad Aazim",
-              style: GoogleFonts.roboto(
-                color: Colors.white,
-                fontSize: 14,
               ),
-            ),
-          ),
-          Row(
-            children: [
-              Padding(padding: EdgeInsets.only(left: 20)),
-              ExpandableDescription(
-                text:
-                    "Flutter Developer | UI/UX Designer\nLove to code and design ❤Flutter\nFlutter Developer | UI/UX Designer\nLove to code",
-              ),
-            ],
-          ),
-          SizedBox(
-            height: 10,
-          ),
-          Row(
-            children: [
-              Padding(padding: EdgeInsets.only(left: 20)),
-              GestureDetector(
-                onTap: () {},
-                child: Container(
-                  height: 32,
-                  width: 340,
-                  decoration: BoxDecoration(
-                      color: Colors.transparent,
-                      borderRadius: BorderRadius.circular(5),
-                      border: Border.all(color: Color(0xff444444))),
-                  child: Center(child: Text("Edit Profile")),
-                ),
+              Row(
+                children: [
+                  Padding(padding: EdgeInsets.only(left: 20)),
+                  ExpandableDescription(
+                    text:
+                        "Flutter Developer | UI/UX Designer\nLove to code and design ❤Flutter\nFlutter Developer | UI/UX Designer\nLove to code",
+                  ),
+                ],
               ),
               SizedBox(
-                width: 5,
+                height: 10,
               ),
-              Container(
-                height: 32,
-                width: 32,
-                decoration: BoxDecoration(
-                    color: Colors.transparent,
-                    borderRadius: BorderRadius.circular(5),
-                    border: Border.all(color: Color(0xff444444))),
-                child: Center(
-                  child: Icon(
-                    Icons.arrow_forward_ios_rounded,
-                    size: 14,
+              Row(
+                children: [
+                  Padding(padding: EdgeInsets.only(left: 20)),
+                  GestureDetector(
+                    onTap: () {},
+                    child: Container(
+                      height: 32,
+                      width: 340,
+                      decoration: BoxDecoration(
+                          color: Colors.transparent,
+                          borderRadius: BorderRadius.circular(5),
+                          border: Border.all(color: Color(0xff444444))),
+                      child: Center(child: Text("Edit Profile")),
+                    ),
                   ),
-                ),
+                  SizedBox(
+                    width: 5,
+                  ),
+                  Container(
+                    height: 32,
+                    width: 32,
+                    decoration: BoxDecoration(
+                        color: Colors.transparent,
+                        borderRadius: BorderRadius.circular(5),
+                        border: Border.all(color: Color(0xff444444))),
+                    child: Center(
+                      child: Icon(
+                        Icons.arrow_forward_ios_rounded,
+                        size: 14,
+                      ),
+                    ),
+                  ),
+                ],
               ),
+              SizedBox(
+                height: 20,
+              ),
+              SizedBox(
+                height: 104,
+                child: P_grid(highlight: highlightmaim),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              ProfileTabs(),
             ],
           ),
-          SizedBox(
-            height: 20,
-          ),
-          SizedBox(
-            height: 104,
-            child: P_grid(highlight: highlightmaim),
-          ),
-          SizedBox(
-            height: 20,
-          ),
-          ProfileTabs(),
-        ],
+        ),
       ),
     );
   }

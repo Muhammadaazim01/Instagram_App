@@ -20,7 +20,7 @@ class ProfileBottomSheet {
               _buildOption(context, "QR code", Icons.qr_code),
               _buildOption(context, "Saved", Icons.bookmark_border),
               _buildOption(context, "Close Friends", Icons.group),
-              const Divider(color: Colors.grey),
+              Divider(color: Colors.grey),
               _buildOption(context, "Logout", Icons.logout, color: Colors.red),
             ],
           ),

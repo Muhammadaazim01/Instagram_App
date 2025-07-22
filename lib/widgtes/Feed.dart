@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:instagramclone/Funtional_icons/Bott_sheet_settings.dart';
+import 'package:instagramclone/Funtional_icons/book_mark.dart';
 import 'package:instagramclone/Funtional_icons/heart_Animation.dart';
 import 'package:instagramclone/Screens/HomePage.dart';
+import 'package:instagramclone/controllers/book_mark_controller.dart';
 import 'package:instagramclone/widgtes/Expandable_Text.dart';
 import 'package:instagramclone/widgtes/message_widgets/comments_bottom_sheet.dart';
 
@@ -18,12 +22,18 @@ class Feed extends StatefulWidget {
 }
 
 class _FeedState extends State<Feed> {
+  final BookmarkController controller = Get.find<BookmarkController>();
+
+  List<List<String>> postcomment = [];
   late List<bool> isLikedList;
+  List<bool> isSavedList = [];
   @override
   void initState() {
     super.initState();
 
     isLikedList = List.generate(widget.feedsss.length, (_) => false);
+    postcomment = List.generate(widget.feedsss.length, (_) => []);
+    controller.initializeList(widget.feedsss.length);
   }
 
   @override
@@ -82,9 +92,77 @@ class _FeedState extends State<Feed> {
                     ],
                   ),
                   Spacer(),
-                  Icon(
-                    Icons.more_horiz,
-                    color: Colors.white,
+                  IconButton(
+                    onPressed: () {
+                      BottomSheetSetting.showSettingSheet(
+                        icons: [
+                          BottomSheetAction(
+                            icon: Icons.share,
+                            label: 'Share',
+                            onTap: () {
+                              Get.snackbar(
+                                "Share",
+                                "Post shared successfully",
+                                backgroundColor: Colors.grey[850],
+                                snackPosition: SnackPosition.BOTTOM,
+                              );
+                            },
+                          ),
+                          BottomSheetAction(
+                            icon: Icons.link,
+                            label: 'Copy Link',
+                            onTap: () {
+                              Get.snackbar(
+                                "Copied",
+                                "Link copied to clipboard",
+                                backgroundColor: Colors.grey[850],
+                                snackPosition: SnackPosition.BOTTOM,
+                              );
+                            },
+                          ),
+                        ],
+                        tiles: [
+                          BottomSheetTile(
+                            icon: Icons.notifications,
+                            label: 'Turn of Feeds notification',
+                            // color: Colors.red,
+                            onTap: () {
+                              Get.snackbar(
+                                "Turn off",
+                                "Feed notification",
+                                backgroundColor: Colors.grey[850],
+                                snackPosition: SnackPosition.BOTTOM,
+                              );
+                            },
+                          ),
+                          BottomSheetTile(
+                            icon: Icons.not_interested_outlined,
+                            label: "not interested",
+                            onTap: () {
+                              Get.snackbar(
+                                "Not interested",
+                                "Not interested in this Posted",
+                                backgroundColor: Colors.grey[850],
+                                snackPosition: SnackPosition.BOTTOM,
+                              );
+                            },
+                          ),
+                          BottomSheetTile(
+                            icon: Icons.interests,
+                            label: "interested",
+                            onTap: () {
+                              Get.snackbar(
+                                "interested",
+                                "Yes interested in this Posted",
+                                backgroundColor: Colors.grey[850],
+                                snackPosition: SnackPosition.BOTTOM,
+                              );
+                            },
+                          ),
+                        ],
+                      );
+                    },
+                    icon: Icon(Icons.more_horiz, color: Colors.white),
                   ),
                   SizedBox(
                     width: 10,
@@ -141,17 +219,14 @@ class _FeedState extends State<Feed> {
                               isScrollControlled: true,
                               backgroundColor: Colors.transparent,
                               builder: (_) => CommentsBottomSheet(
-                                comments: [
-                                  "Nice post!",
-                                  "Awesome 🔥",
-                                  "Wow 👏",
-                                ],
+                                comments: postcomment[index],
                               ),
                             );
 
                             if (newComment != null && newComment.isNotEmpty) {
-                              print("User commented: $newComment");
-                              // TODO: Add logic to update comments list or backend
+                              setState(() {
+                                postcomment[index].add(newComment);
+                              });
                             }
                           }),
                       SizedBox(
@@ -162,13 +237,10 @@ class _FeedState extends State<Feed> {
                         size: 22,
                       ),
                       Spacer(),
-                      Icon(
-                        Icons.bookmark_border_outlined,
-                        size: 22,
-                      ),
-                      SizedBox(
-                        width: 10,
-                      ),
+                      BookmarkButton(
+                        screen: 'FeedScreen',
+                        index: index,
+                      )
                     ],
                   ),
                   SizedBox(
@@ -193,36 +265,30 @@ class _FeedState extends State<Feed> {
                       text: feedAdmin[index]['description'],
                     ),
                   ),
-                  Row(
-                    children: [
-                      Padding(padding: EdgeInsets.only(left: 10)),
-                      Text(
-                        feedAdmin[index]["comments"],
-                        style: GoogleFonts.roboto(
-                          fontSize: 14,
-                          fontWeight: FontWeight.bold,
-                          color: Color(0xff8A8A8A),
+                  if (postcomment[index].isNotEmpty)
+                    Row(
+                      children: [
+                        Padding(padding: EdgeInsets.only(left: 10)),
+                        Text(
+                          postcomment[index].last,
+                          style: GoogleFonts.roboto(
+                            fontSize: 14,
+                            fontWeight: FontWeight.bold,
+                            color: Color(0xff8A8A8A),
+                          ),
                         ),
-                      ),
-                    ],
-                  ),
+                      ],
+                    ),
                   SizedBox(
                     height: 10,
                   ),
                   Row(
                     children: [
                       Padding(padding: EdgeInsets.only(left: 10, top: 10)),
-                      Container(
-                        height: 30,
-                        width: 30,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          image: DecorationImage(
-                            image: AssetImage(
-                              feedAdmin[index]["commentprofile"],
-                            ),
-                          ),
-                        ),
+                      CircleAvatar(
+                        radius: 15,
+                        backgroundImage:
+                            AssetImage(feedAdmin[index]["commentprofile"]),
                       ),
                       SizedBox(
                         width: 10,
@@ -234,17 +300,14 @@ class _FeedState extends State<Feed> {
                             isScrollControlled: true,
                             backgroundColor: Colors.transparent,
                             builder: (_) => CommentsBottomSheet(
-                              comments: [
-                                "Nice post!",
-                                "Awesome 🔥",
-                                "Wow 👏",
-                              ],
+                              comments: postcomment[index],
                             ),
                           );
 
                           if (newComment != null && newComment.isNotEmpty) {
-                            print("User commented: $newComment");
-                            // TODO: Add logic to update comments list or backend
+                            setState(() {
+                              postcomment[index].add(newComment);
+                            });
                           }
                         },
                         child: Text(

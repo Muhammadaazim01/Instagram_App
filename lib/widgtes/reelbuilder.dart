@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:instagramclone/Funtional_icons/Bott_sheet_settings.dart';
 import 'package:instagramclone/Funtional_icons/ExpandedDescription.dart';
 import 'package:instagramclone/Funtional_icons/FollowingButton.dart';
+import 'package:instagramclone/controllers/book_mark_controller.dart';
 import 'package:instagramclone/widgtes/message_widgets/comments_bottom_sheet.dart';
 import 'package:video_player/video_player.dart';
 
@@ -14,17 +17,20 @@ class Reelwidgets extends StatefulWidget {
 }
 
 class _ReelwidgetsState extends State<Reelwidgets> {
+  List<List<String>> reelscomment = [];
   VideoPlayerController? _controller;
   int _currentIndex = 0;
   bool _showPlayPauseIcon = false;
   IconData _playPauseIcon = Icons.pause;
   bool _isLiked = false;
   bool _showHeart = false;
-
+  final BookmarkController controller = Get.find<BookmarkController>();
   @override
   void initState() {
     super.initState();
     _initializeVideo(0);
+    reelscomment = List.generate(widget.videosreels.length, (_) => []);
+    controller.initializeList(widget.videosreels.length);
   }
 
   void _initializeVideo(int index) {
@@ -239,21 +245,15 @@ class _ReelwidgetsState extends State<Reelwidgets> {
                     icon: Icon(Icons.messenger_outline, color: Colors.white),
                     onPressed: () async {
                       final newComment = await showModalBottomSheet<String>(
-                        context: context,
-                        isScrollControlled: true,
-                        backgroundColor: Colors.transparent,
-                        builder: (_) => CommentsBottomSheet(
-                          comments: [
-                            "Nice post!",
-                            "Awesome 🔥",
-                            "Wow 👏",
-                          ],
-                        ),
-                      );
-
+                          context: context,
+                          isScrollControlled: true,
+                          backgroundColor: Colors.transparent,
+                          builder: (_) => CommentsBottomSheet(
+                              comments: reelscomment[index]));
                       if (newComment != null && newComment.isNotEmpty) {
-                        print("User commented: $newComment");
-                        // TODO: Add logic to update comments list or backend
+                        setState(() {
+                          reelscomment[index].add(newComment);
+                        });
                       }
                     },
                   ),
@@ -263,9 +263,95 @@ class _ReelwidgetsState extends State<Reelwidgets> {
                     style: TextStyle(color: Colors.white, fontSize: 13),
                   ),
                   SizedBox(height: 20),
+                  Obx(() {
+                    bool isSaved = controller.isSaved('ReelScreen', index);
+                    return IconButton(
+                      onPressed: () {
+                        controller.toggleSave('ReelScreen', index);
+                      },
+                      icon: Icon(
+                        isSaved
+                            ? Icons.bookmark
+                            : Icons.bookmark_border_outlined,
+                        color: Colors.white,
+                      ),
+                    );
+                  }),
+                  SizedBox(height: 20),
                   Icon(Icons.send, color: Colors.white),
                   SizedBox(height: 30),
-                  Icon(Icons.more_horiz, color: Colors.white),
+                  IconButton(
+                    onPressed: () {
+                      BottomSheetSetting.showSettingSheet(
+                        icons: [
+                          BottomSheetAction(
+                            icon: Icons.share,
+                            label: 'Share',
+                            onTap: () {
+                              Get.snackbar(
+                                "Share",
+                                "Reel shared successfully",
+                                backgroundColor: Colors.grey[850],
+                                snackPosition: SnackPosition.BOTTOM,
+                              );
+                            },
+                          ),
+                          BottomSheetAction(
+                            icon: Icons.link,
+                            label: 'Copy Link',
+                            onTap: () {
+                              Get.snackbar(
+                                "Copied",
+                                "Link copied to clipboard",
+                                backgroundColor: Colors.grey[850],
+                                snackPosition: SnackPosition.BOTTOM,
+                              );
+                            },
+                          ),
+                        ],
+                        tiles: [
+                          BottomSheetTile(
+                            icon: Icons.notifications,
+                            label: 'Turn of Reels notification',
+                            // color: Colors.red,
+                            onTap: () {
+                              Get.snackbar(
+                                "Turn off",
+                                "Reels notification",
+                                backgroundColor: Colors.grey[850],
+                                snackPosition: SnackPosition.BOTTOM,
+                              );
+                            },
+                          ),
+                          BottomSheetTile(
+                            icon: Icons.not_interested_outlined,
+                            label: "not interested",
+                            onTap: () {
+                              Get.snackbar(
+                                "Not interested",
+                                "Not interested in this Posted",
+                                backgroundColor: Colors.grey[850],
+                                snackPosition: SnackPosition.BOTTOM,
+                              );
+                            },
+                          ),
+                          BottomSheetTile(
+                            icon: Icons.interests,
+                            label: "interested",
+                            onTap: () {
+                              Get.snackbar(
+                                "interested",
+                                "Yes interested in this Posted",
+                                backgroundColor: Colors.grey[850],
+                                snackPosition: SnackPosition.BOTTOM,
+                              );
+                            },
+                          ),
+                        ],
+                      );
+                    },
+                    icon: Icon(Icons.more_horiz, color: Colors.white),
+                  ),
                 ],
               ),
             ),

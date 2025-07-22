@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:instagramclone/Screens/SplashScreen.dart';
+import 'package:get/get.dart';
+import 'package:instagramclone/Screens/UserProfile.dart';
+import 'package:instagramclone/controllers/book_mark_controller.dart';
 
 void main() {
+  Get.put(BookmarkController());
   runApp(const MyApp());
 }
 
@@ -10,10 +13,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData.dark(),
-      home: SplashScreen(),
+      home: Profile_Screen(),
     );
   }
 }

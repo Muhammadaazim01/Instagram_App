@@ -9,6 +9,8 @@ class ReelGrid extends StatelessWidget {
     return GridView.builder(
       padding: EdgeInsets.zero,
       itemCount: gridimages.length,
+      shrinkWrap: true,
+      physics: NeverScrollableScrollPhysics(),
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 3,
         mainAxisSpacing: 2,

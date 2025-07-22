@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 
-class CommentsBottomSheet extends StatelessWidget {
+class CommentsBottomSheet extends StatefulWidget {
   final List<String> comments;
 
   const CommentsBottomSheet({super.key, required this.comments});
 
+  @override
+  State<CommentsBottomSheet> createState() => _CommentsBottomSheetState();
+}
+
+class _CommentsBottomSheetState extends State<CommentsBottomSheet> {
   @override
   Widget build(BuildContext context) {
     TextEditingController commentController = TextEditingController();
@@ -37,14 +42,14 @@ class CommentsBottomSheet extends StatelessWidget {
             const SizedBox(height: 12),
             Expanded(
               child: ListView.builder(
-                itemCount: comments.length,
+                itemCount: widget.comments.length,
                 itemBuilder: (context, index) {
                   return ListTile(
                     leading: const CircleAvatar(
                       backgroundImage: AssetImage('assets/images/messi.png'),
                     ),
-                    title: Text(comments[index]),
-                    subtitle: const Text("1h ago"),
+                    title: Text(widget.comments[index]),
+                    subtitle: const Text("1s ago"),
                   );
                 },
               ),
@@ -85,9 +90,12 @@ class CommentsBottomSheet extends StatelessWidget {
                 IconButton(
                   icon: const Icon(Icons.send),
                   onPressed: () {
-                    final text = commentController.text.trim();
+                    final text = commentController.text;
                     if (text.isNotEmpty) {
-                      Navigator.of(context).pop(text); // return comment
+                      setState(() {
+                        widget.comments.add(text);
+                        commentController.clear();
+                      });
                     }
                   },
                 ),

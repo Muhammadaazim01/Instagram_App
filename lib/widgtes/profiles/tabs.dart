@@ -12,37 +12,68 @@ class ProfileTabs extends StatelessWidget {
       "assets/images/4.png",
       "assets/images/4.png",
       "assets/images/4.png",
+      "assets/images/4.png",
+      "assets/images/4.png",
+      "assets/images/4.png",
+      "assets/images/4.png",
+      "assets/images/4.png",
+      "assets/images/4.png",
+      "assets/images/4.png",
+      "assets/images/4.png",
+      "assets/images/4.png",
+      "assets/images/4.png",
+      "assets/images/4.png",
+      "assets/images/4.png",
+      "assets/images/4.png",
+      "assets/images/4.png",
+      "assets/images/4.png",
+      "assets/images/4.png",
     ];
     List<String> grid = [
       "assets/images/4.png",
       "assets/images/4.png",
       "assets/images/4.png",
       "assets/images/4.png",
+      "assets/images/4.png",
+      "assets/images/4.png",
+      "assets/images/4.png",
+      "assets/images/4.png",
+      "assets/images/4.png",
+      "assets/images/4.png",
+      "assets/images/4.png",
+      "assets/images/4.png",
+      "assets/images/4.png",
+      "assets/images/4.png",
+      "assets/images/4.png",
+      "assets/images/4.png",
+      "assets/images/4.png",
+      "assets/images/4.png",
+      "assets/images/4.png",
+      "assets/images/4.png",
     ];
 
-    return Expanded(
-      child: DefaultTabController(
-        length: 2,
-        child: Column(
-          children: [
-            const TabBar(
-              indicatorColor: Colors.white,
-              indicatorWeight: 1.5,
-              tabs: [
-                Tab(icon: Icon(Icons.grid_on_outlined)),
-                Tab(icon: Icon(Icons.video_collection_outlined)),
+    return DefaultTabController(
+      length: 2,
+      child: Column(
+        children: [
+          const TabBar(
+            indicatorColor: Colors.white,
+            indicatorWeight: 1.5,
+            tabs: [
+              Tab(icon: Icon(Icons.grid_on_outlined)),
+              Tab(icon: Icon(Icons.video_collection_outlined)),
+            ],
+          ),
+          SizedBox(
+            height: MediaQuery.of(context).size.height * 0.6,
+            child: TabBarView(
+              children: [
+                PostGrid(postimages: posts),
+                ReelGrid(gridimages: grid),
               ],
             ),
-            Expanded(
-              child: TabBarView(
-                children: [
-                  PostGrid(postimages: posts),
-                  ReelGrid(gridimages: grid),
-                ],
-              ),
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:instagramclone/widgtes/Tabbar.dart';
+import 'package:instagramclone/Funtional_icons/Suggestion_textfield.dart';
 
 class Shop_Screen extends StatefulWidget {
   const Shop_Screen({super.key});
@@ -36,13 +36,9 @@ class _Shop_ScreenState extends State<Shop_Screen> {
     'assets/images/4.png',
     'assets/images/5.png',
     'assets/images/6.png',
-    "assets/images/1.png",
-    'assets/images/2.png',
-    'assets/images/3.png',
-    'assets/images/4.png',
-    'assets/images/5.png',
-    'assets/images/6.png',
   ];
+
+  String selectedSuggestion = '';
 
   @override
   Widget build(BuildContext context) {
@@ -78,32 +74,37 @@ class _Shop_ScreenState extends State<Shop_Screen> {
         children: [
           Padding(
             padding: const EdgeInsets.all(12.0),
-            child: TextField(
-              cursorColor: Color(0xff868686),
-              style: TextStyle(color: Colors.white),
-              decoration: InputDecoration(
-                fillColor: Color(0xff262626),
-                filled: true,
-                prefixIcon: Icon(Icons.search, color: Color(0xff868686)),
-                hintText: "Search with Meta AI",
-                hintStyle: TextStyle(color: Color(0xff868686)),
-                enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10.0),
-                  borderSide: BorderSide(color: Color(0xff262626)),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10.0),
-                  borderSide: BorderSide(color: Color(0xff262626)),
-                ),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10.0),
-                ),
-              ),
+            child: SuggestionTextField(
+              suggestions: tabsshow,
+              labelText: 'Search with Meta AI',
+              onSuggestionSelected: (value) {
+                setState(() {
+                  selectedSuggestion = value;
+                });
+              },
             ),
           ),
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 8.0),
-            child: TabbarShop(tabtext: tabsshow),
+            child: SizedBox(
+              height: 40,
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemCount: tabsshow.length,
+                itemBuilder: (context, index) {
+                  return Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                    child: Chip(
+                      backgroundColor: Colors.grey[800],
+                      label: Text(
+                        tabsshow[index],
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    ),
+                  );
+                },
+              ),
+            ),
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
