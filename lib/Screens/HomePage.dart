@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:instagramclone/Screens/Messages.dart';
+import 'package:instagramclone/Screens/notification_screen.dart';
 import 'package:instagramclone/widgtes/Feed.dart';
 import 'package:instagramclone/widgtes/Storys.dart';
 
@@ -15,51 +16,51 @@ class HomePage extends StatefulWidget {
 final List<Map<String, String>> storyList = [
   {
     'userstoryimage': 'assets/images/messi.png',
-    'username': 'john_doe',
+    'username': 'Lura',
   },
   {
     'userstoryimage': 'assets/images/1.png',
-    'username': 'messi',
+    'username': 'brain',
   },
   {
     'userstoryimage': 'assets/images/brain.png',
-    'username': 'brain',
+    'username': 'mark',
   },
   {
     'userstoryimage': 'assets/images/2.png',
-    'username': 'messi',
+    'username': 'williomson',
   },
   {
     'userstoryimage': 'assets/images/4.png',
-    'username': 'brain',
+    'username': 'tate',
   },
   {
     'userstoryimage': 'assets/images/5.png',
-    'username': 'messi',
+    'username': 'christian',
   },
   {
     'userstoryimage': 'assets/images/6.png',
-    'username': 'brain',
+    'username': 'shelby',
   },
   {
     'userstoryimage': 'assets/images/7.png',
-    'username': 'brain',
+    'username': 'thomas',
   },
   {
     'userstoryimage': 'assets/images/8.png',
-    'username': 'messi',
+    'username': 'andy',
   },
   {
     'userstoryimage': 'assets/images/9.png',
-    'username': 'brain',
+    'username': 'max',
   },
   {
     'userstoryimage': 'assets/images/10.png',
-    'username': 'brain',
+    'username': 'zendy',
   },
   {
     'userstoryimage': 'assets/images/11.png',
-    'username': 'messi',
+    'username': 'william',
   },
   {
     'userstoryimage': 'assets/images/brain.png',
@@ -68,72 +69,73 @@ final List<Map<String, String>> storyList = [
 ];
 final List<Map<String, dynamic>> feedAdmin = [
   {
-    'profileImage': 'assets/images/1.png',
-    'username': 'marvel',
-    'postImage': 'assets/images/Rectangle 1.png',
+    'profileImage': 'assets/images/cbumprofile.jpeg',
+    'username': 'Cbum',
+    'postImage': 'assets/images/cbumprofile.jpeg',
     'likes': '105,762 likes',
     'description':
         'marvel We can’t get enough of this dynamic duo. Marvel Studios’ @HawkeyeOfficial is now streaming on Disney. Catch all the action and adventure exclusively on the platform!',
     'comments': 'View all 103 comments',
-    'commentprofile': 'assets/images/brain.png',
+    'commentprofile': 'assets/images/messi.png',
     'timeAgo': '13 hours ago',
   },
   {
-    'profileImage': 'assets/images/2.png',
-    'username': 'marvel',
-    'postImage': 'assets/images/Wallpaper2.jpeg',
+    'profileImage': 'assets/images/andrew_tate.jpg',
+    'username': 'Andrew_Tate',
+    'postImage': 'assets/images/andrew_tate.jpg',
     'likes': '105,762 likes',
     'description':
         'I love you 3000 🫶@HawkeyeOfficial is now streaming on Disney. Catch all the action and adventure exclusively on the platform',
     'comments': 'View all 103 comments',
-    'commentprofile': 'assets/images/brain.png',
+    'commentprofile': 'assets/images/messi.png',
     'timeAgo': '1 day ago',
   },
   {
-    'profileImage': 'assets/images/3.png',
-    'username': 'marvel',
-    'postImage': 'assets/images/Wallpaper2.jpeg',
+    'profileImage': 'assets/images/goldberg.jpg',
+    'username': 'Gold_Berg',
+    'postImage': 'assets/images/goldberg.jpg',
     'likes': '105,762 likes',
     'description':
         'Chaos magic 💫 #scarletwitch I love you 3000 🫶@HawkeyeOfficial is now streaming on',
     'comments': 'View all 103 comments',
-    'commentprofile': 'assets/images/brain.png',
+    'commentprofile': 'assets/images/messi.png',
     'timeAgo': '20 days ago',
   },
   {
-    'profileImage': 'assets/images/4.png',
-    'username': 'marvel',
-    'postImage': 'assets/images/Rectangle 1.png',
+    'profileImage': 'assets/images/reel1image.jpg',
+    'username': 'Nature',
+    'postImage': 'assets/images/reel1image.jpg',
     'likes': '105,762 likes',
     'description':
         'marvel We can’t get enough of this dynamic duo. Marvel Studios’ @HawkeyeOfficial is now streaming on Disney. Catch all the action and adventure exclusively on the platform!',
     'comments': 'View all 103 comments',
-    'commentprofile': 'assets/images/brain.png',
+    'commentprofile': 'assets/images/messi.png',
     'timeAgo': '13 hours ago',
   },
   {
-    'profileImage': 'assets/images/7.png',
-    'username': 'marvel',
+    'profileImage': 'assets/images/5.png',
+    'username': 'bilal',
     'postImage': 'assets/images/Wallpaper2.jpeg',
     'likes': '105,762 likes',
     'description':
         'I love you 3000 🫶@HawkeyeOfficial is now streaming on Disney. Catch all the action and adventure exclusively on the platform',
     'comments': 'View all 103 comments',
-    'commentprofile': 'assets/images/brain.png',
+    'commentprofile': 'assets/images/messi.png',
     'timeAgo': '1 day ago',
   },
   {
     'profileImage': 'assets/images/7.png',
-    'username': 'marvel',
-    'postImage': 'assets/images/Wallpaper2.jpeg',
+    'username': 'Cbum_Official',
+    'postImage': 'assets/images/cbumprofile.jpeg',
     'likes': '105,762 likes',
     'description':
         'Chaos magic 💫 #scarletwitch I love you 3000 🫶@HawkeyeOfficial is now streaming on',
     'comments': 'View all 103 comments',
-    'commentprofile': 'assets/images/brain.png',
+    'commentprofile': 'assets/images/messi.png',
     'timeAgo': '20 days ago',
   },
 ];
+bool hasNewNotification = true;
 
 class _HomePageState extends State<HomePage> {
   @override
@@ -147,7 +149,7 @@ class _HomePageState extends State<HomePage> {
             Text(
               "Instagram",
               style: GoogleFonts.grandHotel(
-                fontSize: 34,
+                fontSize: 25,
                 fontWeight: FontWeight.bold,
                 color: Colors.white,
               ),
@@ -155,12 +157,36 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
         actions: [
-          IconButton(
-            icon: Icon(
-              Icons.favorite_border,
-              size: 37,
-            ),
-            onPressed: () {},
+          Stack(
+            children: [
+              IconButton(
+                icon: Icon(
+                  Icons.favorite_border,
+                  size: 25,
+                ),
+                onPressed: () {
+                  setState(() {
+                    hasNewNotification = false;
+                  });
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => NotificationScreen()));
+                },
+              ),
+              if (hasNewNotification)
+                Positioned(
+                    right: 8,
+                    top: 8,
+                    child: Container(
+                      width: 9,
+                      height: 9,
+                      decoration: BoxDecoration(
+                        color: Colors.red,
+                        shape: BoxShape.circle,
+                      ),
+                    ))
+            ],
           ),
           IconButton(
             icon: Icon(CupertinoIcons.paperplane),

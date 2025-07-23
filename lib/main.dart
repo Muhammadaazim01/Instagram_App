@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:instagramclone/Screens/UserProfile.dart';
+import 'package:instagramclone/Screens/SplashScreen.dart';
 import 'package:instagramclone/controllers/book_mark_controller.dart';
 
 void main() {
@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData.dark(),
-      home: Profile_Screen(),
+      home: SplashScreen(),
     );
   }
 }

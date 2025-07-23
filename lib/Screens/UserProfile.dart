@@ -209,7 +209,7 @@ class _Profile_ScreenState extends State<Profile_Screen> {
                     onTap: () {},
                     child: Container(
                       height: 32,
-                      width: 340,
+                      width: 300,
                       decoration: BoxDecoration(
                           color: Colors.transparent,
                           borderRadius: BorderRadius.circular(5),
